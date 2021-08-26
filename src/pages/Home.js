@@ -3,22 +3,27 @@ import {Typography, Grid, Paper, TextField, Button} from "@material-ui/core";
 import {Autocomplete} from "@material-ui/lab"
 import img from '../images/simpson.jpeg';
 import "../styles/Home.css";
+import { useHistory } from "react-router";
 
-export default function Home() {
-    const signs = [
-        {name: "Aries"},
-        {name: "Taurus"}, 
-        {name: "Gemini"}, 
-        {name: "Cancer"}, 
-        {name: "Leo"}, 
-        {name: "Virgo"},
-        {name: "Libra"},
-        {name: "Scorpio"},
-        {name: "Sagittarius"},
-        {name: "Capricorn"},
-        {name: "Aquarius"},
-        {name: "Pisces"}, ];
-        
+export default function Home(props) {
+    const signs = ["Aries",
+        "Taurus", 
+        "Gemini", 
+        "Cancer", 
+       "Leo", 
+        "Virgo",
+    "Libra",
+        "Scorpio",
+        "Sagittarius",
+      "Capricorn",
+      "Aquarius",
+     "Pisces"];
+    const history = useHistory();
+
+    const handleSubmit  = (e) => {
+        e.preventDefault();
+        history.push('/Song');
+    }
     //do textfield and button for horoscope
     return(
         <Grid container>
@@ -39,11 +44,15 @@ export default function Home() {
                         id="combo-box-demo"
                         fullWidth
                         options={signs}
-                        getOptionLabel={(option) => option.name}
+                        getOptionLabel={(option) => option}
                         style={{marginBottom: "1rem"}}
+                        inputValue={props.userSign}
+                        onInputChange={(event, newInputValue) => {
+                            props.setUserSign(newInputValue);
+                        }}
                         renderInput={(params) => <TextField {...params} label="Select your horoscope sign" variant="outlined" />}
                     />
-                    <Button variant="contained" color="primary" fullWidth>
+                    <Button variant="contained" color="primary" fullWidth onClick={handleSubmit}>
                     Let's Groove
                     </Button>
                 </div>
