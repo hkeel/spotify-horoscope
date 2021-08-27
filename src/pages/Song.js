@@ -19,7 +19,7 @@ export default function Song(props) {
       } else if (sign === "Taurus") {
         playListId = "37i9dQZF1DXbCgDGG5xQtb";
       } else if (sign === "Gemini") {
-        playListId = "37i9dQZF1DWWVULI5wUsL9";
+        playListId = "37i9dQZF1DWWVULl5wUsL9";
       } else if (sign === "Cancer") {
         playListId = "37i9dQZF1DXaeX3MJpiD4U";
       } else if (sign === "Leo") {
@@ -92,7 +92,7 @@ export default function Song(props) {
             style={{ marginTop: 10, maxWidth: "100%", height: "auto" }}
           ></img>
           <p></p>
-          <audio controls style={{ marginBottom: 100, marginTop: 20 }}>
+          <audio controls style={{ marginBottom: 100, marginTop: 20, maxWidth: "100%", height: "auto" }}>
             <source src={song.preview_url} type="audio/mp3"></source>
           </audio>
         </div>
