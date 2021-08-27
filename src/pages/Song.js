@@ -92,7 +92,7 @@ export default function Song(props) {
             style={{ marginTop: 10, maxWidth: "100%", height: "auto" }}
           ></img>
           <p></p>
-          <audio controls style={{ marginBottom: 100, marginTop: 20, maxWidth: "100%", height: "auto" }}>
+          <audio controls style={{ marginBottom: 100, marginTop: 20 }}>
             <source src={song.preview_url} type="audio/mp3"></source>
           </audio>
         </div>
