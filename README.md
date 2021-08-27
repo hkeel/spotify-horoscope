@@ -1,6 +1,5 @@
 # spotify-horoscope
 Deployed app: https://main.d15kjmixmy5nan.amplifyapp.com/
-Repo for React Code Scramble #2
 
 ## Details
 This repo uses the spotify api to get different horoscope playlists. The user first inputs their horoscope, and the the corresponding playlist is grabbed from spotify and a random song from the playlist is displayed.
