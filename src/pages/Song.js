@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from "react";
-import {Typography, Grid, CircularProgress} from "@material-ui/core";
+import {Typography, Grid, CircularProgress, Button} from "@material-ui/core";
 import "../styles/Song.css";
 import { getPlaylist } from "../services/APIServices";
+import { useHistory } from "react-router";
 
 
 export default function Song(props) {
     let playListId = "";
     const [loading, setLoading] = useState(true);
+    const [song, setSong] = useState();
+    const history = useHistory();
     
     useEffect((playListId, sign) => {
         sign = props.userSign;
@@ -38,8 +41,10 @@ export default function Song(props) {
 
         getPlaylist(playListId).then((res)=> {
             console.log(res.data.tracks.items);
-            let index = Math.floor(Math.random() * 10)
+            let index = Math.floor(Math.random() * res.data.tracks.items.length)
             console.log(res.data.tracks.items[index].track.name)
+            setSong(res.data.tracks.items[index].track);
+        }).finally(() => {
             setLoading(false);
         })
     }, [props.userSign]);
@@ -64,18 +69,33 @@ export default function Song(props) {
             )}
         else {
             return (
-                <div>HI</div>
+                <div style={{paddingTop: 20}}>
+                    <Typography variant="h5">{song.name}</Typography>
+                    <Typography variant="subtitle1">By {song.artists[0].name}</Typography>
+                    <img src={song.album.images[0].url} alt="album cover" style={{marginTop: 10}}></img>
+                    <p></p>
+                    <audio controls style={{marginBottom: 100, marginTop: 20}}>
+                        <source src={song.preview_url} type="audio/mp3"></source>
+                    </audio>
+                </div>
             )
         }
     }
         
+    const handleClick = (e) => {
+        e.preventDefault();
+        history.push('/');
+    }
 
     return (
+        <body style={{backgroundColor: "rgba(240, 227, 245, 0.9)"}}>
+            <Button variant="contained" color="primary" style={{marginTop: 15, marginLeft: 10}} onClick={handleClick}>Back</Button>
         <div className="content">
-            <Typography variant="h3">
-                Vibing with a {props.userSign} be like...
+            <Typography variant="h4" style={{paddingTop:20}}>
+                Your {props.userSign} song is:
             </Typography>
             {renderSong(playListId, props.userSign)}
         </div>
+        </body>
     );
 }

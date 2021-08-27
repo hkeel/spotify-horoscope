@@ -1,7 +1,7 @@
 import React from "react";
 import {Typography, Grid, Paper, TextField, Button} from "@material-ui/core";
 import {Autocomplete} from "@material-ui/lab"
-import img from '../images/simpson.jpeg';
+import img from '../media/simpson.jpeg';
 import "../styles/Home.css";
 import { useHistory } from "react-router";
 

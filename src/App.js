@@ -14,7 +14,7 @@ function App() {
     <Router>
     <div className="App">
       <Switch>
-        <Route path="/Song"><Song userSign={userSign} component={Song}/></Route>
+        <Route path="/Song"><Song setUserSign={setUserSign} userSign={userSign} component={Song}/></Route>
         <Route exact path="/"><Home setUserSign={setUserSign} component={Home}/></Route>
       </Switch>
     </div>
