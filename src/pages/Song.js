@@ -89,7 +89,7 @@ export default function Song(props) {
           <img
             src={song.album.images[0].url}
             alt="album cover"
-            style={{ marginTop: 10 }}
+            style={{ marginTop: 10, maxWidth: "100%", height: "auto" }}
           ></img>
           <p></p>
           <audio controls style={{ marginBottom: 100, marginTop: 20 }}>
