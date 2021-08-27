@@ -1,4 +1,5 @@
 # spotify-horoscope
+Deployed app: https://main.d15kjmixmy5nan.amplifyapp.com/
 Repo for React Code Scramble #2
 
 ## Details
