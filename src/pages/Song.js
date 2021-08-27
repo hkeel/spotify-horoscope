@@ -73,7 +73,7 @@ export default function Song(props) {
             direction="column"
             alignItems="center"
             justifyContent="center"
-            style={{ paddingTop: 20 }}
+            style={{ paddingTop: 200, paddingBottom: 2000 }}
           >
             <Grid item xs={3}>
               <CircularProgress />
