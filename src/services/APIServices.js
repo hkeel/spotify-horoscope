@@ -1,7 +1,8 @@
 import axios from "axios";
-import { token } from "../constants";
+import { id, secret } from "../constants";
+import querystring from 'querystring';
 
-const getPlaylist = (playlistId) => {
+const getPlaylist = (playlistId, token) => {
   return axios({
     method: "GET",
     headers: {
@@ -13,4 +14,15 @@ const getPlaylist = (playlistId) => {
   });
 };
 
-export { getPlaylist };
+const getToken = () => {
+    return axios({
+        method: "POST",
+        headers: {
+            'Authorization': 'Basic ' + Buffer.from(id + ':' + secret).toString('base64'),
+        },
+        data: querystring.stringify({'grant_type' : 'client_credentials'}),
+        url: 'https://accounts.spotify.com/api/token'
+    })
+}
+
+export { getPlaylist, getToken };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Typography, Grid, CircularProgress, Button } from "@material-ui/core";
 import "../styles/Song.css";
-import { getPlaylist } from "../services/APIServices";
+import { getPlaylist, getToken } from "../services/APIServices";
 import { useHistory } from "react-router";
 
 export default function Song(props) {
@@ -9,6 +9,7 @@ export default function Song(props) {
   const [loading, setLoading] = useState(true);
   const [song, setSong] = useState();
   const history = useHistory();
+  let token = "";
 
   useEffect(
     (playListId, sign) => {
@@ -39,15 +40,24 @@ export default function Song(props) {
         playListId = "37i9dQZF1DWX0EDWtabVRv";
       }
 
-      getPlaylist(playListId)
+      getToken()
         .then((res) => {
-          console.log(res.data.tracks.items);
-          let index = Math.floor(Math.random() * res.data.tracks.items.length);
-          console.log(res.data.tracks.items[index].track.name);
-          setSong(res.data.tracks.items[index].track);
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+          token = res.data.access_token;
         })
-        .finally(() => {
-          setLoading(false);
+        .then(() => {
+          getPlaylist(playListId, token)
+            .then((res) => {
+              console.log(res.data.tracks.items);
+              let index = Math.floor(
+                Math.random() * res.data.tracks.items.length
+              );
+              console.log(res.data.tracks.items[index].track);
+              setSong(res.data.tracks.items[index].track);
+            })
+            .finally(() => {
+              setLoading(false);
+            });
         });
     },
     [props.userSign]

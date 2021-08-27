@@ -1,1 +1,2 @@
-export const token = "BQCL2Rj3QindqwiWB9jz6qUDluxXlGr2KjnHIG0Y3AasFmueZqf7e_dJwic-gqapaWt4i82XdAIwTHuTPM3JdCYv26AsQ3d8faFBj4Bx9z-KdZRnYN8DldJHIMLDb3kcGALg8VnXusJs202_czwSyaA";
+export const id = '4344060a1f9946ffbf3660d804bbb210'
+export const secret = '44cb5442f89f4771968fea8024bb0b0c'

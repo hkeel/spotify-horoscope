@@ -26,7 +26,7 @@ export default function Home(props) {
     e.preventDefault();
     history.push("/Song");
   };
-  //do textfield and button for horoscope
+  
   return (
     <Grid container>
       <Grid item xs={false} sm={4} md={7}>
@@ -62,6 +62,7 @@ export default function Home(props) {
                 {...params}
                 label="Select your horoscope sign"
                 variant="outlined"
+                required
               />
             )}
           />
